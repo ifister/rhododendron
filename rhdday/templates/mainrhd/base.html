@@ -1,0 +1,120 @@
+{% load cms_tags sekizai_tags menu_tags %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+{%if   LANG=="ru" %}
+{{title_ru}}
+{%else%}
+{{title_en}}
+{%endif%}
+</title>
+
+{%if   LANG=="ru" %}
+<meta name="keywords" content="Garden Template, Free Layout, CSS, HTML, green, light blue, white" />
+{%else%}
+<meta name="keywords" content="Garden Template, Free Layout, CSS, HTML, green, light blue, white" />
+{%endif%}
+
+{%if   LANG=="ru" %}
+<meta name="description" content="Garden Template is a free CSS layout provided by mainrhd.com" />
+{%else%}
+<meta name="description" content="Garden Template is a free CSS layout provided by mainrhd.com" />
+{%endif%}
+
+
+{% addtoblock "css" %}
+{%block mycss%}
+{% endblock %}
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+{%block myjs%}
+{% endblock %}
+{% endaddtoblock %}
+
+{%renderblock "css"%}
+{%renderblock "js"%}
+
+</head>
+<body>
+
+<div id="mainrhd_site_title_bar_wrapper">
+	<div id="mainrhd_site_title_bar">
+    	
+        <div id="site_title">
+            <h1><a href="{{DOMAIN}}" target="_parent">
+			{%if LANG=="ru"%}
+            <img src="{{STATIC_URL}}/images/mainrhd/logo_ru.png" alt="День рододендрона" />
+			{%else%}
+			<img src="{{STATIC_URL}}/images/mainrhd/logo_en.png" alt="Rhododendron Day Festival" />
+			{%endif%}
+            <!-- <span>your tagline goes here</span> -->
+            </a></h1>
+        </div>
+    
+    </div> <!-- end of mainrhd_site_title_bar -->
+</div> <!-- end of mainrhd_site_title_bar_wrapper -->
+
+<div id="mainrhd_menu_wrapper">
+	<div id="mainrhd_menu">
+   		<ul>
+		{%if LANG=="ru"%}
+            <li><a href="index.html" class="current">Домой</a></li>
+            <li><a href="subpage.html">Фотогалерея</a></li>
+	    <li><a href="#" class="last">Гостевая книга</a></li>
+            <li><a href="#" class="last">Контакты</a></li>
+		{%else%}
+            <li><a href="index.html" class="current">Home</a></li>
+            <li><a href="subpage.html">Gallery</a></li>
+	    <li><a href="#" class="last">Guest book</a></li>
+            <li><a href="#" class="last">Contacts</a></li>
+		{%endif%}
+        </ul>     
+{% language_chooser "cms/plugins/language_chooser.html" %}
+    </div> <!-- end of mainrhd_menu -->
+</div><!-- end of mainrhd_menu_wrapper -->
+
+
+<div id="mainrhd_content_outter_wrapper">
+<div id="mainrhd_content_inner_wrapper">
+	<div id="mainrhd_content_wrapper">
+	<div id="mainrhd_content">
+
+{%block maincontent%}
+
+{%endblock%}
+	
+        <div id="content_column">
+        	           		   
+		{%block  contentcol%}
+	
+		{%endblock%}
+		       
+        
+        <div class="cleaner"></div>
+    
+	</div>
+		
+    </div>
+
+</div>
+</div>
+
+<div class="cleaner"></div>
+
+
+
+<div id="mainrhd_footer_wrapper">
+	<div id="mainrhd_footer">
+    	
+        Copyright © 2048 <a href="#">Your Company Name</a> | 
+        <a href="http://www.iwebsitetemplate.com" target="_parent">Website Templates</a> by <a href="http://www.mainrhd.com" target="_parent">Free CSS Templates</a>
+    </div>
+
+</div> <!-- end of mainrhd_footer_wrapper -->
+
+</body>
+</html>

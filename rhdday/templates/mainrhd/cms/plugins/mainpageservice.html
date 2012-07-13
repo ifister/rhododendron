@@ -1,0 +1,22 @@
+{%load menu_tags sekizai_tags cms_tags%}
+
+
+{%if cur_placeholder=="service_years"%}
+{% for item in YEARS %}
+<li><a href="{%page_url "mainpage"%}{{LANG}}/gallery/{{item.year}}"> {{item.year}} </a></li>
+{%endfor%}
+{%endif%}
+
+{%if cur_placeholder=="service_photos"%}
+{% for k in PHOTOS %}
+<li><a href="{%page_url "mainpage"%}/gallery/{{k.year}}"><img src="{{MEDIA_URL}}{{k.filepath}}" alt="{{k.description}}"/></a></li>
+{%endfor%}
+{%endif%}
+
+
+
+
+
+
+
+
