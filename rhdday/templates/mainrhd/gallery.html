@@ -1,29 +1,30 @@
-{% extends base.html %}
+{% extends "base.html" %}
 {% load cms_tags sekizai_tags menu_tags %}
-
-
 
 {%block maincontent%}
 <div id="sidebar">
+
 <div class="sidebar_section">
-{% if LANG=="ru" %}
+{% if request.LANGUAGE_CODE == "ru" %}
 <h2> Фотогалерея </h2>
 {% else %}
 <h2> Gallery </h2>
 {%endif%}
-<!--  За последние года  -->
+
 <ul class="category_list">
 {%placeholder service_years%}
 </ul>
 </div>
 <div class="cleaner"></div>
+
 </div> <!-- end of  sidebar -->
+
 {%endblock%}
 
 
 {%block  contentcol%}
 	<div class="section_w500">
-	{%placeholder service_gallery%}	
+	{% placeholder service_gallery %}	
 	</div>
 {%endblock%}
 

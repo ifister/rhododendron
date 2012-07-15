@@ -1,46 +1,30 @@
-{% extends base.html %}
+{% extends "base.html" %}
 {% load cms_tags sekizai_tags menu_tags %}
-
-
-<!-- It is probably-->
-{%block mycss%}
-<link href="{{STATIC_URL}}css/mainrhd/style.css" rel="stylesheet" type="text/css" />
-{% endblock %}
-
-{%block myjs%}
-<script language="javascript" type="text/javascript">
-function clearText(field)
-{
-    if (field.defaultValue == field.value) field.value = '';
-    else if (field.value == '') field.value = field.defaultValue;
-}
-</script>
-{% endblock %}
 
 {%block maincontent%}
     	<div id="sidebar">
        	  <div class="sidebar_section">
-	  	{% if LANG=="ru" %}
+          {% if request.LANGUAGE_CODE == "ru" %}
             <h2> Меню </h2>
 		<ul class="category_list">
-                <li><a href="index.html"> Основные положения </a></li>
-		<li><a href="index.html"> Представление работы </a></li>
+                <li><a href="/positions"> Основные положения </a></li>
+		<li><a href="/rules"> Представление работы </a></li>
                 </ul>
 		{% else %}
 			<h2> Info </h2>
 			  <ul class="category_list">
-                  <li><a href="index.html">Basic positions</a></li>
-                  <li><a href="index.html">Present a work</a></li>
+                  <li><a href="/positions">Basic positions</a></li>
+                  <li><a href="/rules">Present a work</a></li>
               </ul>
 		{%endif%}
 			</div>  
 	
 	<div class="sidebar_section">
-          	{% if LANG=="ru" %}
+          	{% if request.LANGUAGE_CODE == "ru" %}
 		<h2> Фотогалерея </h2>
-			{% else %}
-			<h2> Gallery </h2>
-			{%endif%}
+		{% else %}
+		<h2> Gallery </h2>
+		{%endif%}
 			<!--  За последние года  -->
 	<ul class="category_list">
 		{%placeholder service_years%}
@@ -48,6 +32,7 @@ function clearText(field)
 	</div>
 
 	<div class="cleaner"></div>
+
 	</div> <!-- end of  sidebar -->
 {%endblock%}
 
@@ -58,15 +43,15 @@ function clearText(field)
 
 
  <div class="section_w500">
-		 {% if LANG=="ru" %}
-         	  <h2> Случайные фотографии </h2>
-	   	 {% else %}
-		  <h2> Random Photo </h2>
-		 {%endif%}
+	{% if request.LANGUAGE_CODE == "ru" %}
+        <h2> Случайные фотографии </h2>
+	{% else %}
+	<h2> Random Photo </h2>
+	{%endif%}
 	<ul class="gallery">
-		{%placeholder service_photos%}
+	{%placeholder service_photos%}
 	<li><a href="#"><img src="photos/{{k.year}}/{{k.name}}" alt="{{k.description}}"/></a></li>
 	</ul>
-	</div>  
+</div>  
 
 {%endblock%}

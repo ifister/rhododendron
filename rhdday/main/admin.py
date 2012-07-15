@@ -1,5 +1,4 @@
 from django.contrib import admin
-from trapacl.trapa.models import Variables,DTQuestion
+from rhdday.main.models import Photos
 #
-admin.site.register(Variables)
-admin.site.register(DTQuestion)
+admin.site.register(Photos)

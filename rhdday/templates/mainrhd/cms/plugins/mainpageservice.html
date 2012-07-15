@@ -1,20 +1,28 @@
-{%load menu_tags sekizai_tags cms_tags%}
+{%load menu_tags cms_tags%}
 
-
-{%if cur_placeholder=="service_years"%}
+{% if cur_placeholder == "service_years" %}
 {% for item in YEARS %}
-<li><a href="{%page_url "mainpage"%}{{LANG}}/gallery/{{item.year}}"> {{item.year}} </a></li>
+<li><a href="{%page_url "mainpage"%}{{LANG}}/gallery?year={{item.year}}"> {{item.year}} </a></li>
 {%endfor%}
 {%endif%}
 
-{%if cur_placeholder=="service_photos"%}
+{%if cur_placeholder == "service_photos" %}
 {% for k in PHOTOS %}
 <li><a href="{%page_url "mainpage"%}/gallery/{{k.year}}"><img src="{{MEDIA_URL}}{{k.filepath}}" alt="{{k.description}}"/></a></li>
 {%endfor%}
 {%endif%}
 
 
+{{cur_placeholder}}
 
+{%if cur_placeholder == "service_gallery" %}
+олыджвадложцдулокждло
+<ul class="gallery">
+{% for k in PHOTOS %}
+<li><a href="{%page_url "mainpage"%}/gallery/{{k.year}}"><img src="{{MEDIA_URL}}{{k.picture.name}}" alt="{{k.description}}"/></a></li>
+{%endfor%}
+</ul>
+{%endif%}
 
 
 

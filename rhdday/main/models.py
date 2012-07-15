@@ -8,27 +8,37 @@ from rhdday.settings import MEDIA_ROOT
 from random import randint
 
 
+def photoupload(instance,filename):
+    '''
+    Rename user photo.
+    '''
+    try:
+        cpath=os.path.join(MEDIA_ROOT,'photo','%s'%instance.year)
+        if os.path.exists(cpath):
+            return u'photo/%s/%s'%(instance.year,filename)
+        else:
+            res=atoi('%s'%instance.year)
+            os.path.mkdir(os.path.join(MEDIA_ROOT,'photo','%s'%instance.year))
+            return u'photo/%s/%s'%(instance.year,filename)
+    except:
+        return u'photo/misc/%s'%filename
+
+
 class Photos(models.Model):
-    
-    def uploadto(self,filename):
-        '''
-        Rename user photo.
-        '''
-        done=False
-        while not done:
-            filename='%s'%randint(0,10000)
-            if not os.path.exists(os.path.join(MEDIA_ROOT,filename)):
-                done=True
-            else:
-                pass
-        _filepath=os.path.join('photos','%s'%self.year,self.filename)
-        self.filepath=models.CharField(max_length=20,default=_filepath)
+
+    '''
+    Base Photo 
+    '''
+    readonly_fields=['filepath']
+
 
     name_ru = models.CharField(max_length=100)
     name_en = models.CharField(max_length=100)
     description_ru = models.CharField(max_length=350,default='')
     description_en = models.CharField(max_length=350,default='')
     year=models.IntegerField(max_length=4)
-    filepath=models.CharField(max_length=20,default='')
-    picture=models.FileField(upload_to=uploadto,blank=True,default='NULL')
-    readonly_fields=['filepath']
+    picture=models.FileField(upload_to=photoupload,blank=True,default='NULL')
+
+class Foo(CMSPlugin):
+    pass
+    

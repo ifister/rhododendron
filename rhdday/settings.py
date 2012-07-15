@@ -17,7 +17,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(PROJECT_PATH,'trapacl.db'),                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(PROJECT_PATH,'mybase.db'),  # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -69,13 +69,23 @@ MEDIA_URL = 'http://127.0.0.1:8000/media/'
 CMS_PAGE_MEDIA_PATH = 'cms'
 
 CMS_PLACEHOLDER_CONF = {
-    'mainpage.html trapatitle': {
-        "plugins": ['TextPlugin']
+    'mainpage.html service_photos': {
+        "plugins": ['MainPageService']
     },
-        'mainpage.html mainpagecontent': {
+     'mainpage.html service_years': {
+        "plugins": ['MainPageService']
+    },                 
+                        
+     'mainpage.html mainpagecontent': {
         "plugins": ['TextPlugin', 'PicturePlugin']
     },
 
+    'gallery.html service_years': {
+        "plugins": ['MainPageService']
+    },                   
+    'gallery.html service_gallery': {
+        "plugins": ['GalleryService']
+    },                     
 }
 
 
@@ -106,9 +116,9 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_PATH, 'templates').replace('\\','/'),
-    
-#    os.path.join(PROJECT_PATH, 'templates/trtemp/css').replace('\\','/'),
+#    os.path.join(PROJECT_PATH, 'templates').replace('\\','/'),
+   
+    os.path.join(PROJECT_PATH, 'main/webs').replace('\\','/'),
 
 )
 
@@ -121,7 +131,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'jfklkgw3kjljfghjahkl32p59hjkjfkjlsjh98yhgnaff443kwj4hg'
+SECRET_KEY = 'gfhery34dfgw4ryh4yhj7i8fjty34tsedfy45thjfhdrt'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -142,7 +152,7 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.toolbar.ToolbarMiddleware',
 )
 
-ROOT_URLCONF = 'trapacl.urls'
+ROOT_URLCONF = 'rhdday.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -154,7 +164,8 @@ TEMPLATE_DIRS = (
 
 #Django cms templates
 CMS_TEMPLATES = (
-    ('facepage.html', 'FacePage Template'),
+    ('mainpage.html', 'MainPage Template'),
+    ('gallery.html', 'Gallery Template'),
 
  )
 
@@ -190,17 +201,16 @@ INSTALLED_APPS = (
     'sekizai',
     'cms.plugins.file',
     'cms.plugins.flash',
-#    'cms.plugins.googlemap',
+    'cms.plugins.googlemap',
     'cms.plugins.link',
     'cms.plugins.picture',
-#   'cms.plugins.snippet',
-    #'cms.plugins.teaser',
+  #'cms.plugins.snippet',
+ # 'cms.plugins.teaser',
     'cms.plugins.text',
     'cms.plugins.video',
-    'cms.plugins.twitter',
+ #  'cms.plugins.twitter',
 #my local modules:    
-
-
+    'main',
 
 )
 
