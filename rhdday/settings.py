@@ -7,6 +7,7 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+COMPRESS_HTML = True
 
 ADMINS = (
      ('Dmitry E. Kislov', 'kisl_di@mail.ru'),
@@ -166,6 +167,7 @@ TEMPLATE_DIRS = (
 CMS_TEMPLATES = (
     ('mainpage.html', 'MainPage Template'),
     ('gallery.html', 'Gallery Template'),
+    ('common.html', 'Common Informational Template'),
 
  )
 
@@ -204,12 +206,12 @@ INSTALLED_APPS = (
     'cms.plugins.googlemap',
     'cms.plugins.link',
     'cms.plugins.picture',
-  #'cms.plugins.snippet',
- # 'cms.plugins.teaser',
+    'cms.plugins.snippet',
+    'cms.plugins.teaser',
     'cms.plugins.text',
     'cms.plugins.video',
- #  'cms.plugins.twitter',
-#my local modules:    
+    'cms.plugins.twitter',
+    #my local modules:    
     'main',
 
 )
@@ -236,3 +238,4 @@ LOGGING = {
         },
     }
 }
+

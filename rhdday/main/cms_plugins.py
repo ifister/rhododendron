@@ -12,10 +12,9 @@ from django.http import Http404
 import pdb
 
 class MainPageService(CMSPluginBase):
-    model = Foo
+    model = None
     name = _("Main Page Service Plugin")
     render_template = "cms/plugins/mainpageservice.html"
-
     def render(self, context, instance, placeholder):
         context['instance'] = instance
         context['cur_placeholder'] = placeholder
@@ -25,6 +24,7 @@ class MainPageService(CMSPluginBase):
         for k in ph_objs:
             years.append(k.year)
         years=list(set(years))
+        years.sort()
         context['LANG']=get_language()
         context['YEARS']=[]
         context['PHOTOS']=[]
@@ -40,7 +40,7 @@ class MainPageService(CMSPluginBase):
         return context
 
 class GalleryService(CMSPluginBase):
-    model = Foo
+    model = None
     name = _("Gallery Page Service Plugin")
     render_template = "cms/plugins/mainpageservice.html"
     def render(self, context, instance, placeholder):

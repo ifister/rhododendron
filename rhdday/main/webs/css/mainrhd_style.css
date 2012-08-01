@@ -333,13 +333,19 @@ h3 {
 
 .gallery li {
 	float: left;
-	width: 100px;
+	width: 200px;
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
 
 .gallery li img {
 	margin-bottom: 5px;
+	width: 200px
+}
+
+.gallery li a img {
+	margin-bottom: 5px;
+	width: 200px
 }
 
 #mainrhd_footer_wrapper {

@@ -2,7 +2,7 @@
 from django.db import models
 from cms.models import CMSPlugin
 from django.db.models.signals import pre_delete
-import os 
+import os ,pdb
 import datetime
 from rhdday.settings import MEDIA_ROOT
 from random import randint
@@ -30,8 +30,6 @@ class Photos(models.Model):
     Base Photo 
     '''
     readonly_fields=['filepath']
-
-
     name_ru = models.CharField(max_length=100)
     name_en = models.CharField(max_length=100)
     description_ru = models.CharField(max_length=350,default='')

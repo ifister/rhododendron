@@ -37,8 +37,11 @@
 {%endblock%}
 
 {%block  contentcol%}
+
+{% block commonpage %}
+
 	 <div class="section_w500">
-	{%placeholder mainpagecontent%}	
+{%placeholder mainpagecontent%}	
 	 </div>
 
 
@@ -53,5 +56,8 @@
 	<li><a href="#"><img src="photos/{{k.year}}/{{k.name}}" alt="{{k.description}}"/></a></li>
 	</ul>
 </div>  
+
+{%endblock%}
+
 
 {%endblock%}

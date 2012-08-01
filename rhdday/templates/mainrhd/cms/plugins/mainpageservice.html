@@ -13,13 +13,12 @@
 {%endif%}
 
 
-{{cur_placeholder}}
+
 
 {%if cur_placeholder == "service_gallery" %}
-олыджвадложцдулокждло
 <ul class="gallery">
 {% for k in PHOTOS %}
-<li><a href="{%page_url "mainpage"%}/gallery/{{k.year}}"><img src="{{MEDIA_URL}}{{k.picture.name}}" alt="{{k.description}}"/></a></li>
+<li><a href="{{MEDIA_URL}}{{k.picture.name}}"><img src="{{MEDIA_URL}}{{k.picture.name}}" alt="{{k.description}}"/></a></li>
 {%endfor%}
 </ul>
 {%endif%}
