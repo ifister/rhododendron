@@ -212,7 +212,7 @@ INSTALLED_APPS = (
     'cms.plugins.video',
     'cms.plugins.twitter',
     #my local modules:    
-    'main',
+    'rhdday.main',
 
 )
 

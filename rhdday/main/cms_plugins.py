@@ -11,14 +11,14 @@ from string import atoi
 from django.http import Http404  
 import pdb
 
+
 class MainPageService(CMSPluginBase):
-    model = None
+    model = Foo
     name = _("Main Page Service Plugin")
     render_template = "cms/plugins/mainpageservice.html"
     def render(self, context, instance, placeholder):
         context['instance'] = instance
         context['cur_placeholder'] = placeholder
-        
         years=[]
         ph_objs=Photos.objects.order_by('year')
         for k in ph_objs:
@@ -40,7 +40,7 @@ class MainPageService(CMSPluginBase):
         return context
 
 class GalleryService(CMSPluginBase):
-    model = None
+    model = Foo
     name = _("Gallery Page Service Plugin")
     render_template = "cms/plugins/mainpageservice.html"
     def render(self, context, instance, placeholder):
