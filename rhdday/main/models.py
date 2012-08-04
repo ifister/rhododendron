@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from cms.models import CMSPlugin
-from django.db.models.signals import pre_delete, pre_save
+from django.db.models.signals import pre_delete, post_save
+from cms.models.fields import PlaceholderField
 import os ,pdb
 import datetime
 from rhdday import settings 
@@ -36,9 +37,21 @@ class Photos(models.Model):
     thumb_minsize=models.IntegerField(max_length=3,default=200)
     picture_thumb=models.CharField(max_length=100,blank=True,default='')
 
+
+
+#class ArchiveContent(models.Model):
+#    year=models.IntegerField(max_length=4)
+#    content=PlaceholderField('archive_content')
+#    lang=models.CharField(max_length=2,default='ru')
+#    
+#    
+
+
+
 class Foo(CMSPlugin):
     pass
-    
+
+
 def do_del_photo(sender, **kwargs): 
     # the object which is saved can be accessed via kwargs 'instance' key.
     obj = kwargs['instance']
@@ -67,4 +80,4 @@ def create_thumbnail(sender,**kwargs):
     
 
 pre_delete.connect(do_del_photo, sender=Photos)
-pre_save.connect(create_thumbnail, sender=Photos)
+post_save.connect(create_thumbnail, sender=Photos)

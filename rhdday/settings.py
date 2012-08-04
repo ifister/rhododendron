@@ -7,7 +7,7 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-COMPRESS_HTML = True
+
 
 ADMINS = (
      ('Dmitry E. Kislov', 'kisl_di@mail.ru'),
@@ -86,7 +86,16 @@ CMS_PLACEHOLDER_CONF = {
     },                   
     'gallery.html service_gallery': {
         "plugins": ['GalleryService']
-    },                     
+    },     
+    'archive.html archive_service_years': {
+        "plugins": ['GetArchiveYears']
+    },    
+    'archive.html archive_content': {
+        "plugins": ['TextPlugin', 'PicturePlugin']
+    },  
+    'archive.html archive_service': {
+        "plugins": ['TextPlugin', 'PicturePlugin']
+    },                         
 }
 
 
@@ -155,6 +164,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'rhdday.urls'
 
+
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -168,6 +179,7 @@ CMS_TEMPLATES = (
     ('mainpage.html', 'MainPage Template'),
     ('gallery.html', 'Gallery Template'),
     ('common.html', 'Common Informational Template'),
+    ('archive.html', 'Main Archive Template')
 
  )
 
