@@ -45,7 +45,6 @@ LANGUAGES = [
     ('ru','Russian')
 ]
 
-
 SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
@@ -93,9 +92,8 @@ CMS_PLACEHOLDER_CONF = {
     'archive.html archive_content': {
         "plugins": ['TextPlugin', 'PicturePlugin']
     },  
-    'archive.html archive_service': {
-        "plugins": ['TextPlugin', 'PicturePlugin']
-    },                         
+                      
+                    
 }
 
 
@@ -178,7 +176,7 @@ TEMPLATE_DIRS = (
 CMS_TEMPLATES = (
     ('mainpage.html', 'MainPage Template'),
     ('gallery.html', 'Gallery Template'),
-    ('common.html', 'Common Informational Template'),
+#    ('common.html', 'Common Informational Template'),
     ('archive.html', 'Main Archive Template')
 
  )

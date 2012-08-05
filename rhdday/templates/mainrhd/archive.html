@@ -2,6 +2,7 @@
 {% load cms_tags sekizai_tags menu_tags  %}
 
 {%block maincontent%}
+
 <div id="sidebar">
 
 <div class="sidebar_section">
@@ -12,7 +13,7 @@
 {%endif%}
 
 <ul class="category_list">
-{%placeholder archive_service_years inherit %}
+{%placeholder archive_service_years %}
 </ul>
 </div>
 <div class="cleaner"></div>
@@ -24,7 +25,7 @@
 
 {%block  contentcol%}
 	<div class="section_w500">
-	{% placeholder archive_service %}	
+	{% placeholder archive_content %}
 	</div>
 {%endblock%}
 
