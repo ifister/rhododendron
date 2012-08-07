@@ -1,0 +1,403 @@
+/*
+CSS Credit: http://www.mainrhd.com
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	line-height: 1.7em;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 11px;
+	color: #666666;
+    background: #ffffff url(../images/mainrhd_body_top.jpg) repeat-x;
+}
+		
+a:link, a:visited { color: #000000; text-decoration: none; font-weight: bold; } 
+a:active, a:hover { color: #000000; text-decoration: none; }
+
+p { margin: 0px; padding: 0px; }
+
+img { margin: 0px; padding: 0px; border: none; }
+
+.cleaner { clear: both; width: 100%; height: 0px; font-size: 0px;  }
+
+.cleaner_h10 { clear: both; width:100%; height: 10px; }
+.cleaner_h20 { clear: both; width:100%; height: 20px; }
+.cleaner_h30 { clear: both; width:100%; height: 30px; }
+.cleaner_h40 { clear: both; width:100%; height: 40px; }
+.cleaner_h50 { clear: both; width:100%; height: 50px; }
+.cleaner_h60 { clear: both; width:100%; height: 60px; }
+
+.button_01 a {
+	display: block;
+	width: 122px;
+	height: 24px;	
+	padding: 5px 0 0 0;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	background: url(../images/mainrhd_button.jpg) no-repeat;
+}
+
+h1 {
+	margin: 0px;
+	padding: 2px 0;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+h2 {
+	margin: 0 0 10px 0;
+	padding: 10px 0;
+	font-size: 30px;
+	font-weight: normal;
+	color: #d77905;
+}
+
+h3 {
+	margin: 0 0 10px 0;
+	padding: 0px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #808e04;
+}
+
+.image_wrapper {
+	margin-top: 3px;
+	margin-bottom: 5px;
+	border: 5px solid #e8e8e8;
+	padding: 1px;
+	background: #fff;
+}
+
+.fl_image {
+	float: left;
+	margin-right: 30px ;
+}
+
+.fr_image {
+	float: right;
+	margin-left: 20px ;
+}
+
+.fl { float: left; }
+.fr { float: right; }
+
+.margin_r40 { margin-right: 40px; }
+
+.margin_r_20 { margin-right: 20px; }
+
+.margin_r_80 { margin-right: 80px; }
+
+#mainrhd_site_title_bar_wrapper {
+	width: 100%;
+	height: 210px;
+	margin: 0 auto;	
+	background: url(../images/mainrhd_header.jpg) no-repeat center top;
+}
+
+#mainrhd_site_title_bar {
+	width: 900px;
+	height: 210px;
+	margin: 0 auto;
+	background: url(../images/mainrhd_header.jpg) no-repeat center top;	
+}
+
+#mainrhd_site_title_bar  #site_title {
+	float: left;
+	width: 400px;
+	padding: 50px 10px 0 200px;
+	overflow: hidden;
+}
+
+#site_title h1 {
+	margin: 0;
+	padding: 0;
+}
+
+#site_title h1 a {
+	margin: 0px;
+	padding: 0px;
+	font-size: 30px;
+	color: #ffffff;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#site_title h1 a:hover {
+	font-weight: bold;	
+	text-decoration: none;
+}
+
+#site_title h1 a span {
+	display: block;
+	margin-top: 10px;
+	margin-left: 5px;
+	font-size: 12px;
+	color: #999;
+	font-weight: normal;
+	letter-spacing: 2px;
+}
+
+#mainrhd_menu_wrapper {
+	width: 100%;
+	height: 80px;
+	margin: 0 auto;	
+	background: url(../images/mainrhd_menu_bar.jpg) no-repeat center top;
+}
+
+#mainrhd_menu {
+	width: 900px;
+	height: 80px;
+	margin: 0 auto;
+	background: url(../images/mainrhd_menu_bar.jpg) no-repeat center top;	
+}
+
+#mainrhd_menu ul {
+	float: left;
+	margin: 0px;
+	padding: 30px 0 0 150px;
+	list-style: none;
+}
+
+#mainrhd_menu ul li {
+	padding: 0px;
+	margin: 0px;
+	display: inline;
+
+}
+
+#mainrhd_menu ul li a {
+	position: relative; 
+	float: left; 
+ 	display: block; 
+	width: 115px;
+	height: 30px;
+	padding: 5px 0 0 0;
+	margin-right: 10px;
+	text-align: center;
+	font-size: 16px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-decoration: none;
+	color: #eee901;	
+	font-weight: bold;
+	outline: none;
+	background: url(../images/mainrhd_menu_item.png) no-repeat;
+}
+
+#mainrhd_menu li a:hover, #mainrhd_menu li .current {
+	color: #FFF;
+}
+
+#mainrhd_content_outter_wrapper {
+	width: 100%;
+	margin: 0 auto;	
+	background: url(../images/mainrhd_content_middle.png) repeat-y center;
+}
+
+#mainrhd_content_inner_wrapper {
+	width: 100%;
+	margin: 0 auto;	
+	background: url(../images/mainrhd_content_bottom.jpg) center bottom no-repeat;
+}
+
+#mainrhd_content_wrapper {
+	width: 100%;
+	margin: 0 auto;
+    background: url(../images/mainrhd_content_top.jpg) no-repeat center top;
+}
+
+#mainrhd_content {
+	width: 760px;
+	margin: 0 auto;
+	padding: 80px 70px;
+        background: url(../images/mainrhd_content_top.jpg) no-repeat center top;
+}
+
+#mainrhd_content #sidebar {
+	float: left;
+	width: 180px;
+	padding-right: 30px;
+	border-right: 1px  dotted #666;
+	padding-bottom: 300px;
+}
+
+#mainrhd_content #content_column {
+	float: right;
+	width: 500px;
+	font-size: 14px;
+}
+
+#mainrhd_content #sidebar .sidebar_section {
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+	border-bottom: 1px dotted #666;
+}
+
+#mainrhd_content #sidebar h2 {
+	font-size: 22px;
+}
+
+#mainrhd_content #sidebar .category_list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#mainrhd_content #sidebar .category_list li {
+	margin: 0;
+	padding: 10px 0;
+}
+
+#mainrhd_content #sidebar .category_list li a {
+	display: block;
+	padding: 0 0 0 30px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #609142;
+	background: url(../images/mainrhd_list.jpg) no-repeat center left;
+}
+
+#mainrhd_content #sidebar .category_list li a:hover {
+	color: #d77905;
+}
+
+#search_box {
+	width: 180px;
+	background: url(../images/mainrhd_search.png) no-repeat;
+}
+
+#search_box form {
+	width: 180px;
+	margin: 0;
+	padding: 0;
+}
+
+#searchfield {
+	height: 20px;
+	width: 180px;
+	margin-bottom: 10px;
+	color: #333;
+	font-size: 12px;
+	font-variant: normal;
+	line-height: normal;
+}
+
+#searchbutton {
+	float: right;
+	cursor: pointer;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: bottom;
+	white-space: pre;
+}
+
+.gallery {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.gallery li {
+	float: left;
+	width: 200px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	background: None;
+}
+
+.gallery li img {
+	margin-bottom: 5px;
+	width: 200px
+}
+
+.gallery li a img {
+	margin-bottom: 5px;
+	width: 200px
+}
+
+
+
+.section_w500 {
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px dotted  #666;
+	font-size: 14px;
+}
+
+.section_w500 h2 {
+	margin-bottom: 20px;
+	
+}
+
+.section_w500 p {
+	margin-bottom: 10px;
+}
+
+.section_w500 .em_text {
+	color: #333;
+}
+
+.section_w500  ul {
+	margin: 30px 0;
+	padding: 0;
+	list-style: none;
+
+}
+
+
+.section_w500  ul li {
+	margin: 0;
+	padding: 0 0 10px 30px;
+	font-size: 11px;
+	background: url(../images/mainrhd_gallery_list.jpg) no-repeat top left;
+}
+
+
+/*My modification the following: */
+.section_w500 .gallery li {
+	margin: 0;
+	padding: 0 0 10px 30px;
+	font-size: 11px;
+	background: None;
+}
+
+
+#mainrhd_footer_wrapper {
+	width: 100%;
+	height: 145px;
+	margin: 0 auto;	
+	background: url(../images/mainrhd_footer.jpg) no-repeat top center;
+}
+
+#mainrhd_footer {
+	width: 820px;
+	height: 65px;
+	margin: 0 auto;
+	padding: 40px;
+	color: #ffffff;
+	text-align: center;
+	background: url(../images/mainrhd_footer.jpg) no-repeat top center;
+}
+
+#mainrhd_footer a {
+	font-weight: bold;
+	color: #FFF;
+}
+
+/* My css definition*/
+#toright {
+ float: right;
+ text-align: right;	
+
+}
+
+#toright a {
+ font-size: 14px;
+ font-variant: normal;
+ line-height: normal;
+ color: #8ac829
+}
+

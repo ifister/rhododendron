@@ -92,8 +92,6 @@ CMS_PLACEHOLDER_CONF = {
     'archive.html archive_content': {
         "plugins": ['TextPlugin', 'PicturePlugin']
     },  
-                      
-                    
 }
 
 

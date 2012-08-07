@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Zoomimage</title>
+    <link rel="stylesheet" media="screen" type="text/css" href="css/layout.css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="css/zoomimage.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/eye.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/zoomimage.js"></script>
+
+
+
+
+</head>
+<body>
+
+
+   
+                    <a href="images/bw1.jpg" title="The Moon" class="bwGal"><img src="images/th_bw1.jpg" alt="The Moon" /></a>
+                    <a href="images/bw2.jpg" title="Drops" class="bwGal"><img src="images/th_bw2.jpg" alt="Drops" /></a>
+                    <a href="images/bw3.jpg" title="Church" class="bwGal"><img src="images/th_bw3.jpg" alt="Church" /></a>
+
+             
+
+
+<script type="text/javascript" >
+$('a.bwGal').zoomimage({
+	border: 20,
+	centered: true,
+	hideSource: true
+});
+</script>
+
+</body>
+</html>
