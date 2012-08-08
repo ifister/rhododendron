@@ -89,9 +89,14 @@ CMS_PLACEHOLDER_CONF = {
         "plugins": ['GetArchiveYears']
     },    
     'archive.html archive_content': {
-        "plugins": ['TextPlugin', 'PicturePlugin']
+        "plugins": ['TextPlugin', 'PicturePlugin', 'VideoPlugin']
     },  
+    'common.html common_content': {
+        "plugins": ['TextPlugin', 'PicturePlugin', 'VideoPlugin']
+    },                     
+                        
 }
+
 
 #WYM_CLASSES=''
 #WYM_STYLES=''
@@ -168,7 +173,7 @@ TEMPLATE_DIRS = (
 CMS_TEMPLATES = (
     ('mainpage.html', 'MainPage Template'),
     ('gallery.html', 'Gallery Template'),
-#    ('common.html', 'Common Informational Template'),
+    ('common.html', 'Common Page Template'),
     ('archive.html', 'Main Archive Template')
 
  )

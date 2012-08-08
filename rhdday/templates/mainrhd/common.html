@@ -1,10 +1,10 @@
 {% extends "mainpage.html" %}
-{% load cms_tags sekizai_tags menu_tags %}
+{% load cms_tags sekizai_tags menu_tags  %}
 
 
 {% block commonpage %}
-
-{%placeholder commoncontent %}
-
+	<div class="section_w500">
+	{% placeholder common_content %}
+	</div>
 {%endblock%}
 
