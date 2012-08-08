@@ -75,7 +75,6 @@ CMS_PLACEHOLDER_CONF = {
      'mainpage.html service_years': {
         "plugins": ['MainPageService']
     },                 
-                        
      'mainpage.html mainpagecontent': {
         "plugins": ['TextPlugin', 'PicturePlugin']
     },
@@ -93,8 +92,6 @@ CMS_PLACEHOLDER_CONF = {
         "plugins": ['TextPlugin', 'PicturePlugin']
     },  
 }
-
-
 
 #WYM_CLASSES=''
 #WYM_STYLES=''
@@ -123,9 +120,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 #    os.path.join(PROJECT_PATH, 'templates').replace('\\','/'),
-   
     os.path.join(PROJECT_PATH, 'main/webs').replace('\\','/'),
-
 )
 
 # List of finder classes that know how to find static files in
@@ -133,11 +128,10 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'gfhery34dfgw4ryh4yhj7i8fjty34tsedfy45thjfhdrt'
+SECRET_KEY = 'jksd;fjwponbkajdwoieghowoei208gks923ignafkgj'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

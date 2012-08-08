@@ -37,7 +37,23 @@ class Photos(models.Model):
     thumb_minsize=models.IntegerField(max_length=3,default=200)
     picture_thumb=models.CharField(max_length=100,blank=True,default='')
 
-
+    def save(self, force_insert=False, force_update=False):
+        try:
+            if not self.picture_thumb:
+                imfilepath=os.path.join(settings.MEDIA_ROOT,str(self.picture))
+                imfile=Image.open(imfilepath)
+                xsize,ysize=imfile.size
+                xyratio=float(ysize)/float(xsize)
+                minsize=float(self.thumb_minsize)
+                outim=imfile.resize((int(minsize),int(xyratio*minsize)))
+                outim.save(os.path.join(settings.MEDIA_ROOT,str(self.picture)[:-4]+'_thumb.png'))
+                self.picture_thumb=str(self.picture)[:-4]+'_thumb.png'
+            else:
+                pass
+        except:
+            pass
+        finally:
+            super(Photos, self).save(force_insert, force_update)
 
 #class ArchiveContent(models.Model):
 #    year=models.IntegerField(max_length=4)
@@ -64,20 +80,21 @@ def do_del_photo(sender, **kwargs):
         print 'Exception raises.'
 
 
-def create_thumbnail(sender,**kwargs):
-    obj = kwargs['instance']
-    try:
-        imfilepath=os.path.join(settings.MEDIA_ROOT,str(obj.picture))
-        imfile=Image.open(imfilepath)
-        xsize,ysize=imfile.size
-        xyratio=float(ysize)/float(xsize)
-        minsize=float(obj.thumb_minsize)
-        outim=imfile.resize((int(minsize),int(xyratio*minsize)))
-        outim.save(os.path.join(settings.MEDIA_ROOT,str(obj.picture)[:-4]+'_thumb.png'))
-        obj.picture_thumb=str(obj.picture)[:-4]+'_thumb.png'
-    except:
-        pass
+#def create_thumbnail(sender,**kwargs):
+#    obj = kwargs['instance']
+#    try:
+#        imfilepath=os.path.join(settings.MEDIA_ROOT,str(obj.picture))
+#        imfile=Image.open(imfilepath)
+#        xsize,ysize=imfile.size
+#        xyratio=float(ysize)/float(xsize)
+#        minsize=float(obj.thumb_minsize)
+#        outim=imfile.resize((int(minsize),int(xyratio*minsize)))
+#        outim.save(os.path.join(settings.MEDIA_ROOT,str(obj.picture)[:-4]+'_thumb.png'))
+#        obj.picture_thumb=str(obj.picture)[:-4]+'_thumb.png'
+#        print 'caretta'
+#    except:
+#        pass
     
 
 pre_delete.connect(do_del_photo, sender=Photos)
-post_save.connect(create_thumbnail, sender=Photos)
+#post_save.connect(create_thumbnail, sender=Photos)

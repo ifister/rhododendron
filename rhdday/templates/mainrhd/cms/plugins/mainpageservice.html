@@ -24,9 +24,17 @@
 {%if cur_placeholder == "service_gallery" %}
 <ul class="gallery">
 {% for k in PHOTOS %}
-<li><a href="{{MEDIA_URL}}{{k.picture.name}}"><img src="{{MEDIA_URL}}{{k.picture.name}}" alt="{{k.description}}"/></a></li>
+
+{%if LANG == "ru" %}
+<li><a href="{{MEDIA_URL}}{{k.picture.name}}" title="{{k.name_ru}}"  class="bwGal"><img src="{{MEDIA_URL}}{{k.picture_thumb}}" alt="{{k.description_ru}}"/></a></li>
+{% else %}
+<li><a href="{{MEDIA_URL}}{{k.picture.name}}" title="{{k.name_en}}"  class="bwGal"><img src="{{MEDIA_URL}}{{k.picture_thumb}}" alt="{{k.description_en}}"/></a></li>
+{% endif %}
+
 {%endfor%}
+
 </ul>
 {%endif%}
+
 
 

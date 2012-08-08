@@ -2,4 +2,5 @@
 *.pyo
 *~
 rhdday/media
+rhdday/static
 

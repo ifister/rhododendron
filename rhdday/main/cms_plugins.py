@@ -58,6 +58,7 @@ class GalleryService(CMSPluginBase):
     render_template = "cms/plugins/mainpageservice.html"
     def render(self, context, instance, placeholder):
         context['cur_placeholder'] = placeholder
+        context['LANG']=get_language()
         try:
             theyear=get_year_from_request(Photos,context['request'])
             allphotos=Photos.objects.filter(year=theyear)

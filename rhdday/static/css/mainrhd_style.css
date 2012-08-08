@@ -327,6 +327,18 @@ h3 {
 	font-size: 14px;
 }
 
+
+
+
+.section_w500 a.bwGal {
+	display: block;
+	float: left;
+	margin: 0 10px 10px 0;
+    cursor: url(../images/zoomimage/zoomin.cur), default;
+}
+
+
+
 .section_w500 h2 {
 	margin-bottom: 20px;
 	
