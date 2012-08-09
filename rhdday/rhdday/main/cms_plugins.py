@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django import forms
 from django.utils.translation import get_language
 from models import Photos,Foo
-from random import choice
+from random import sample
 from re import findall
 from string import atoi
 from django.http import Http404  
@@ -45,10 +45,8 @@ class MainPageService(CMSPluginBase):
         context['PHOTOS']=[]
         for k in years:
             context['YEARS'].append({'year': k})
-  #      pdb.set_trace()
-  #      for k in xrange(10):
-  #          objs=choice(ph_objs)
-  #          context['PHOTOS'].append({'description':objs.description, 'year': objs.year, 'filepath':objs.filepath})
+        objs=sample(ph_objs,min(9,len(ph_objs)))
+        context['PHOTOS']=objs
             
         return context
 

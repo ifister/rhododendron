@@ -46,7 +46,7 @@
 	 </div>
 
 
- <div class="section_w500">
+ <div class="section_w500" style="border-bottom: None;">
 	{% if request.LANGUAGE_CODE == "ru" %}
         <h2> Случайные фотографии </h2>
 	{% else %}
@@ -54,9 +54,32 @@
 	{%endif%}
 	<ul class="gallery">
 	{%placeholder service_photos%}
-	<li><a href="#"><img src="photos/{{k.year}}/{{k.name}}" alt="{{k.description}}"/></a></li>
+
 	</ul>
 </div>  
+
+
+
+
+{% addtoblock "css" %}<link href="{{STATIC_URL}}css/zoomimage.css" rel="stylesheet" media="screen" type="text/css" />{% endaddtoblock %}
+{% addtoblock "js" %}  <script type="text/javascript" src="{{STATIC_URL}}js/jquery.js"></script> {% endaddtoblock %}
+{% addtoblock "js" %}  <script type="text/javascript" src="{{STATIC_URL}}js/eye.js"></script> {% endaddtoblock %}
+{% addtoblock "js" %}  <script type="text/javascript" src="{{STATIC_URL}}js/utils.js"></script> {% endaddtoblock %}
+{% addtoblock "js" %}  <script type="text/javascript" src="{{STATIC_URL}}js/zoomimage.js"></script> {% endaddtoblock %}
+
+
+
+{% addtoblock "js" %} 
+<script type="text/javascript" >
+$('.section_w500 a.bwGal').zoomimage({
+	border: 20,
+	centered: true,
+	hideSource: true
+});
+</script>
+{% endaddtoblock %}
+
+
 {%endblock%}
 
 {%endblock%}

@@ -1,6 +1,6 @@
 *.pyc
 *.pyo
 *~
-rhdday/media
-rhdday/static
+rhdday_media
+rhdday_static
 

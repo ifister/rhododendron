@@ -34,7 +34,7 @@ class Photos(models.Model):
     description_en = models.CharField(max_length=350,default='',blank=True)
     year=models.IntegerField(max_length=4)
     picture=models.ImageField(upload_to=photoupload,default='NULL')
-    thumb_minsize=models.IntegerField(max_length=3,default=200)
+    thumb_minsize=models.IntegerField(max_length=3,default=150)
     picture_thumb=models.CharField(max_length=100,blank=True,default='')
 
     def save(self, force_insert=False, force_update=False):

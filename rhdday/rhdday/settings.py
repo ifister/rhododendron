@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 import os
+
 gettext = lambda s: s
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
+#Change it if needed.
+BASIC_URL='http://127.0.0.1:8000/'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
 
 
 ADMINS = (
@@ -15,6 +17,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+
+
+###################Have to be deleted#######################
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -25,6 +30,22 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+#############################################################
+
+
+######################New version###############################
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+#        'NAME': 'scidam_rhdday',         # Or path to database file if using sqlite3.
+#        'USER': 'scidam_rhdday',         # Not used with sqlite3.
+#        'PASSWORD': '',                  # Not used with sqlite3.
+#        'HOST': '127.0.0.1',             # Set to empty string for localhost. Not used with sqlite3.
+#        'PORT': '3306',                  # Set to empty string for default. Not used with sqlite3.
+#    }
+#}
+#################################################################
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -57,12 +78,12 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media').replace('\\','/')
+MEDIA_ROOT = os.path.join(PROJECT_PATH, '../../rhdday_media').replace('\\','/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = 'http://127.0.0.1:8000/media/'
+MEDIA_URL =BASIC_URL+'media/'
 
 
 #DJANGO CMS RELATIVE PATH:
@@ -76,7 +97,7 @@ CMS_PLACEHOLDER_CONF = {
         "plugins": ['MainPageService']
     },                 
      'mainpage.html mainpagecontent': {
-        "plugins": ['TextPlugin', 'PicturePlugin']
+        "plugins": ['TextPlugin', 'PicturePlugin', 'ViedoPlugin']
     },
 
     'gallery.html service_years': {
@@ -89,10 +110,10 @@ CMS_PLACEHOLDER_CONF = {
         "plugins": ['GetArchiveYears']
     },    
     'archive.html archive_content': {
-        "plugins": ['TextPlugin', 'PicturePlugin', 'VideoPlugin']
+        "plugins": ['TextPlugin', 'PicturePlugin', 'VideoPlugin', 'FilePlugin','GoogleMapPlugin']
     },  
     'common.html common_content': {
-        "plugins": ['TextPlugin', 'PicturePlugin', 'VideoPlugin']
+        "plugins": ['TextPlugin', 'PicturePlugin', 'VideoPlugin', 'FilePlugin', 'GoogleMapPlugin']
     },                     
                         
 }
@@ -108,11 +129,11 @@ CMS_PLACEHOLDER_CONF = {
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_PATH, 'static').replace('\\','/')
+STATIC_ROOT = os.path.join(PROJECT_PATH, '../../rhdday_static').replace('\\','/')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = 'http://127.0.0.1:8000/static/'
+STATIC_URL =BASIC_URL+'static/'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
@@ -186,7 +207,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'cms.context_processors.media',
     'sekizai.context_processors.sekizai',
-)
+    )
 
 
 INSTALLED_APPS = (
@@ -208,6 +229,7 @@ INSTALLED_APPS = (
     'menus',
     'south',
     'sekizai',
+    
     'cms.plugins.file',
     'cms.plugins.flash',
     'cms.plugins.googlemap',
