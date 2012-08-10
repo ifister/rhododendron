@@ -19,32 +19,32 @@ MANAGERS = ADMINS
 
 
 
-###################Have to be deleted#######################
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(PROJECT_PATH,'mybase.db'),  # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
-#############################################################
-
-
-######################New version###############################
+####################Have to be deleted#######################
 #DATABASES = {
 #    'default': {
-#        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-#        'NAME': 'scidam_rhdday',         # Or path to database file if using sqlite3.
-#        'USER': 'scidam_rhdday',         # Not used with sqlite3.
-#        'PASSWORD': 'e22a819b',                  # Not used with sqlite3.
-#        'HOST': '127.0.0.1',             # Set to empty string for localhost. Not used with sqlite3.
-#        'PORT': '3306',                  # Set to empty string for default. Not used with sqlite3.
+#        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+#        'NAME': os.path.join(PROJECT_PATH,'mybase.db'),  # Or path to database file if using sqlite3.
+#        'USER': '',                      # Not used with sqlite3.
+#        'PASSWORD': '',                  # Not used with sqlite3.
+#        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+#        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
 #    }
 #}
-#################################################################
+##############################################################
+
+
+#####################New version###############################
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'scidam_rhdday',         # Or path to database file if using sqlite3.
+        'USER': 'scidam_rhdday',         # Not used with sqlite3.
+        'PASSWORD': 'e22a819b',                  # Not used with sqlite3.
+        'HOST': '127.0.0.1',             # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '3306',                  # Set to empty string for default. Not used with sqlite3.
+    }
+}
+################################################################
 
 
 # Local time zone for this installation. Choices can be found here:
