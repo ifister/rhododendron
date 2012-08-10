@@ -7,7 +7,7 @@ body {
 	padding: 0;
 	line-height: 1.7em;
 	font-family: Georgia, "Times New Roman", Times, serif;
-	font-size: 11px;
+	font-size: 12px;
 	color: #666666;
     background: #ffffff url(../images/mainrhd_body_top.jpg) repeat-x;
 }
@@ -63,6 +63,26 @@ h3 {
 	font-weight: bold;
 	color: #808e04;
 }
+
+
+h4 {
+color: #e533be;
+font-size: 18px;
+}
+
+h5 {
+color: #ded716;
+font-size: 18px;
+}
+
+h6 {
+color: #3145d9;
+font-size: 18px;
+}
+
+
+
+
 
 .image_wrapper {
 	margin-top: 3px;
@@ -363,7 +383,7 @@ h3 {
 .section_w500  ul li {
 	margin: 0;
 	padding: 0 0 10px 30px;
-	font-size: 11px;
+	font-size: 14px;
 	background: url(../images/mainrhd_gallery_list.jpg) no-repeat top left;
 }
 

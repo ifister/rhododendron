@@ -39,7 +39,7 @@ DATABASES = {
 #        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 #        'NAME': 'scidam_rhdday',         # Or path to database file if using sqlite3.
 #        'USER': 'scidam_rhdday',         # Not used with sqlite3.
-#        'PASSWORD': '',                  # Not used with sqlite3.
+#        'PASSWORD': 'e22a819b',                  # Not used with sqlite3.
 #        'HOST': '127.0.0.1',             # Set to empty string for localhost. Not used with sqlite3.
 #        'PORT': '3306',                  # Set to empty string for default. Not used with sqlite3.
 #    }
@@ -97,7 +97,8 @@ CMS_PLACEHOLDER_CONF = {
         "plugins": ['MainPageService']
     },                 
      'mainpage.html mainpagecontent': {
-        "plugins": ['TextPlugin', 'PicturePlugin', 'ViedoPlugin']
+        "plugins": ['TextPlugin', 'PicturePlugin', 
+                    'ViedoPlugin']
     },
 
     'gallery.html service_years': {
@@ -110,10 +111,12 @@ CMS_PLACEHOLDER_CONF = {
         "plugins": ['GetArchiveYears']
     },    
     'archive.html archive_content': {
-        "plugins": ['TextPlugin', 'PicturePlugin', 'VideoPlugin', 'FilePlugin','GoogleMapPlugin']
+        "plugins": ['TextPlugin', 'PicturePlugin', 'VideoPlugin', 
+                    'FilePlugin','GoogleMapPlugin']
     },  
     'common.html common_content': {
-        "plugins": ['TextPlugin', 'PicturePlugin', 'VideoPlugin', 'FilePlugin', 'GoogleMapPlugin']
+        "plugins": ['TextPlugin', 'LinkPlugin', 'PicturePlugin', 'VideoPlugin', 
+                    'FilePlugin', 'GoogleMapPlugin']
     },                     
                         
 }
@@ -189,6 +192,8 @@ TEMPLATE_DIRS = (
     #os.path.join(PROJECT_PATH, 'templates').replace('\\','/'),
     os.path.join(PROJECT_PATH, 'templates/mainrhd').replace('\\','/'),
 )
+
+CMS_PERMISSION = True
 
 #Django cms templates
 CMS_TEMPLATES = (
