@@ -122,5 +122,5 @@ def resizelargephoto(sender,**kwargs):
     
 
 pre_delete.connect(do_del_photo, sender=Photos)
-pre_save.connect(resizelargephoto,sender=CMSPlugin)
+post_save.connect(resizelargephoto,sender=CMSPlugin)
 #post_save.connect(create_thumbnail, sender=Photos)
