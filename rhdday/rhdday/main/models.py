@@ -9,6 +9,10 @@ from rhdday import settings
 from random import randint
 import Image
 
+
+
+
+
 def photoupload(instance,filename):
     '''
     Rename user photo.
@@ -34,20 +38,26 @@ class Photos(models.Model):
     description_en = models.CharField(max_length=350,default='',blank=True)
     year=models.IntegerField(max_length=4)
     picture=models.ImageField(upload_to=photoupload,default='NULL')
-    thumb_minsize=models.IntegerField(max_length=3,default=150)
+    thumb_minsize=models.IntegerField(max_length=3,default=100)
     picture_thumb=models.CharField(max_length=100,blank=True,default='')
-
+    MAX_PHOTOGALLERY_X_SIZE=1000 #All photos uploaded will be resized.
+    
     def save(self, force_insert=False, force_update=False):
         try:
+            imfilepath=os.path.join(settings.MEDIA_ROOT,str(self.picture))
+            imfile=Image.open(imfilepath)
+            xsize,ysize=imfile.size
+            xyratio=float(ysize)/float(xsize)
             if not self.picture_thumb:
-                imfilepath=os.path.join(settings.MEDIA_ROOT,str(self.picture))
-                imfile=Image.open(imfilepath)
-                xsize,ysize=imfile.size
-                xyratio=float(ysize)/float(xsize)
                 minsize=float(self.thumb_minsize)
                 outim=imfile.resize((int(minsize),int(xyratio*minsize)))
                 outim.save(os.path.join(settings.MEDIA_ROOT,str(self.picture)[:-4]+'_thumb.png'))
                 self.picture_thumb=str(self.picture)[:-4]+'_thumb.png'
+            else:
+                pass
+            if xsize>MAX_PHOTOGALLERY_X_SIZE:
+                outim_main=imfile.resize((int(MAX_PHOTOGALLERY_X_SIZE),int(xyratio*MAX_PHOTOGALLERY_X_SIZE)))
+                outim_main.save(os.path.join(settings.MEDIA_ROOT,str(self.picture)))
             else:
                 pass
         except:
@@ -79,7 +89,22 @@ def do_del_photo(sender, **kwargs):
     except:
         print 'Exception raises.'
 
-
+def resizelargephoto(sender,**kwargs):
+    obj = kwargs['instance']
+    MAX_PICTURE_X_SIZE=500
+    try:
+        imfilepath=os.path.join(settings.MEDIA_ROOT,str(obj.picture.image))
+        imfile=Image.open(imfilepath)
+        xsize,ysize=imfile.size
+        xyratio=float(ysize)/float(xsize)
+        if xsize>MAX_PICTURE_X_SIZE:
+            outim=imfile.resize((int(MAX_PICTURE_X_SIZE),int(xyratio*MAX_PICTURE_X_SIZE)))
+            outim.save(os.path.join(settings.MEDIA_ROOT,str(obj.picture.image)))
+        else:
+            pass
+    except:
+        pass
+    
 #def create_thumbnail(sender,**kwargs):
 #    obj = kwargs['instance']
 #    try:
@@ -97,4 +122,5 @@ def do_del_photo(sender, **kwargs):
     
 
 pre_delete.connect(do_del_photo, sender=Photos)
+pre_save.connect(resizelargephoto,sender=CMSPlugin)
 #post_save.connect(create_thumbnail, sender=Photos)
