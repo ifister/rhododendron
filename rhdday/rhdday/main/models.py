@@ -10,9 +10,6 @@ from random import randint
 import Image
 
 
-
-
-
 def photoupload(instance,filename):
     '''
     Rename user photo.
@@ -39,8 +36,9 @@ class Photos(models.Model):
     year=models.IntegerField(max_length=4)
     picture=models.ImageField(upload_to=photoupload,default='NULL')
     thumb_minsize=models.IntegerField(max_length=3,default=100)
+    MAX_PHOTOGALLERY_X_SIZE=1000
     picture_thumb=models.CharField(max_length=100,blank=True,default='')
-    MAX_PHOTOGALLERY_X_SIZE=1000 #All photos uploaded will be resized.
+
     
     def save(self, force_insert=False, force_update=False):
         try:
@@ -55,8 +53,8 @@ class Photos(models.Model):
                 self.picture_thumb=str(self.picture)[:-4]+'_thumb.png'
             else:
                 pass
-            if xsize>MAX_PHOTOGALLERY_X_SIZE:
-                outim_main=imfile.resize((int(MAX_PHOTOGALLERY_X_SIZE),int(xyratio*MAX_PHOTOGALLERY_X_SIZE)))
+            if xsize>self.MAX_PHOTOGALLERY_X_SIZE:
+                outim_main=imfile.resize((int(self.MAX_PHOTOGALLERY_X_SIZE),int(xyratio*self.MAX_PHOTOGALLERY_X_SIZE)))
                 outim_main.save(os.path.join(settings.MEDIA_ROOT,str(self.picture)))
             else:
                 pass
@@ -92,11 +90,13 @@ def do_del_photo(sender, **kwargs):
 def resizelargephoto(sender,**kwargs):
     obj = kwargs['instance']
     MAX_PICTURE_X_SIZE=500
+    print 'Trying to minimize photo picture...'
     try:
         imfilepath=os.path.join(settings.MEDIA_ROOT,str(obj.picture.image))
         imfile=Image.open(imfilepath)
         xsize,ysize=imfile.size
         xyratio=float(ysize)/float(xsize)
+        print imfilepath,xsize
         if xsize>MAX_PICTURE_X_SIZE:
             outim=imfile.resize((int(MAX_PICTURE_X_SIZE),int(xyratio*MAX_PICTURE_X_SIZE)))
             outim.save(os.path.join(settings.MEDIA_ROOT,str(obj.picture.image)))
