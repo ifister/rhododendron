@@ -5,9 +5,9 @@ gettext = lambda s: s
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 #Change it if needed.
-BASIC_URL='http://127.0.0.1:8000/'
+BASIC_URL='/'
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 

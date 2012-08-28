@@ -47,13 +47,10 @@ class Photos(models.Model):
             imfile=Image.open(imfilepath)
             xsize,ysize=imfile.size
             xyratio=float(ysize)/float(xsize)
-            if not self.picture_thumb:
-                minsize=float(self.thumb_minsize)
-                outim=imfile.resize((int(minsize),int(xyratio*minsize)))
-                outim.save(os.path.join(settings.MEDIA_ROOT,str(self.picture)[:-4]+'_thumb.png'))
-                self.picture_thumb=str(self.picture)[:-4]+'_thumb.png'
-            else:
-                pass
+            minsize=float(self.thumb_minsize)
+            outim=imfile.resize((int(minsize),int(xyratio*minsize)))
+            outim.save(os.path.join(settings.MEDIA_ROOT,str(self.picture)[:-4]+'_thumb.png'))
+            self.picture_thumb=str(self.picture)[:-4]+'_thumb.png'
             if xsize>self.MAX_PHOTOGALLERY_X_SIZE:
                 outim_main=imfile.resize((int(self.MAX_PHOTOGALLERY_X_SIZE),int(xyratio*self.MAX_PHOTOGALLERY_X_SIZE)))
                 outim_main.save(os.path.join(settings.MEDIA_ROOT,str(self.picture)))
@@ -62,7 +59,7 @@ class Photos(models.Model):
         except:
             pass
         finally:
-            pass
+            super(Photos, self).save(force_insert, force_update)
 
 #class ArchiveContent(models.Model):
 #    year=models.IntegerField(max_length=4)
