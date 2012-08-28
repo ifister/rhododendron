@@ -70,8 +70,6 @@ class Photos(models.Model):
 #    
 #    
 
-
-
 class Foo(CMSPlugin):
     pass
 
@@ -86,6 +84,18 @@ def do_del_photo(sender, **kwargs):
         os.remove(os.path.join(settings.MEDIA_ROOT,str(obj.picture)[:-4]+'_thumb.png'))
     except:
         print 'Exception raises.'
+
+
+def do_del_photo1(sender, **kwargs): 
+    # the object which is saved can be accessed via kwargs 'instance' key.
+    obj = kwargs['instance']
+    try:
+        os.remove(os.path.join(settings.MEDIA_ROOT,str(obj.picture.image)))
+    except:
+        print 'Cannot delete picture file.'
+
+
+
 
 def resizelargephoto(sender,**kwargs):
     obj = kwargs['instance']
@@ -122,5 +132,7 @@ def resizelargephoto(sender,**kwargs):
     
 
 pre_delete.connect(do_del_photo, sender=Photos)
-post_save.connect(resizelargephoto,sender=CMSPlugin)
+pre_delete.connect(do_del_photo1, sender=CMSPlugin)
+
+#post_save.connect(resizelargephoto,sender=CMSPlugin)
 #post_save.connect(create_thumbnail, sender=Photos)
