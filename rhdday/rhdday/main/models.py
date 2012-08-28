@@ -41,6 +41,7 @@ class Photos(models.Model):
 
     
     def save(self, force_insert=False, force_update=False):
+        super(Photos, self).save(force_insert, force_update)
         try:
             imfilepath=os.path.join(settings.MEDIA_ROOT,str(self.picture))
             imfile=Image.open(imfilepath)
@@ -61,7 +62,7 @@ class Photos(models.Model):
         except:
             pass
         finally:
-            super(Photos, self).save(force_insert, force_update)
+            pass
 
 #class ArchiveContent(models.Model):
 #    year=models.IntegerField(max_length=4)
