@@ -3,7 +3,7 @@ from django.db import models
 from cms.models import CMSPlugin
 from django.db.models.signals import pre_delete, post_save
 from cms.models.fields import PlaceholderField
-import os ,pdb
+import os
 import datetime
 from rhdday import settings 
 from random import randint
@@ -35,7 +35,7 @@ class Photos(models.Model):
     description_en = models.CharField(max_length=350,default='',blank=True)
     year=models.IntegerField(max_length=4)
     picture=models.ImageField(upload_to=photoupload,default='NULL')
-    thumb_minsize=models.IntegerField(max_length=3,default=100)
+    thumb_minsize=models.IntegerField(max_length=3,default=200)
     MAX_PHOTOGALLERY_X_SIZE=1000
     picture_thumb=models.CharField(max_length=100,blank=True,default='')
 
@@ -83,7 +83,6 @@ def do_del_photo(sender, **kwargs):
     except:
         print 'Exception raises.'
 
-
 def do_del_photo1(sender, **kwargs): 
     # the object which is saved can be accessed via kwargs 'instance' key.
     obj = kwargs['instance']
@@ -91,8 +90,6 @@ def do_del_photo1(sender, **kwargs):
         os.remove(os.path.join(settings.MEDIA_ROOT,str(obj.picture.image)))
     except:
         print 'Cannot delete picture file.'
-
-
 
 
 def resizelargephoto(sender,**kwargs):
@@ -131,6 +128,9 @@ def resizelargephoto(sender,**kwargs):
 
 pre_delete.connect(do_del_photo, sender=Photos)
 pre_delete.connect(do_del_photo1, sender=CMSPlugin)
+
+
+
 
 #post_save.connect(resizelargephoto,sender=CMSPlugin)
 #post_save.connect(create_thumbnail, sender=Photos)

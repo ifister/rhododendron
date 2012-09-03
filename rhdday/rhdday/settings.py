@@ -7,8 +7,11 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 #Change it if needed.
 BASIC_URL='/'
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+
+
+SESSION_COOKIE_AGE=3600
 
 
 ADMINS = (
