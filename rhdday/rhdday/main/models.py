@@ -2,12 +2,11 @@
 from django.db import models
 from cms.models import CMSPlugin
 from django.db.models.signals import pre_delete, post_save
-from cms.plugins.picture.models import Picture
-from cms.models.fields import PlaceholderField
+from cms.plugins.picture.models import Picture,Video,File
 import os
-import datetime
+#import datetime
 from rhdday import settings 
-from random import randint
+#from random import randint
 import Image
 
 
@@ -84,39 +83,44 @@ def do_del_photo(sender, **kwargs):
     except:
         print 'Exception raises.'
 
-def do_del_photo1(sender, **kwargs): 
+def do_del_cms_anything(sender, **kwargs): 
     # the object which is saved can be accessed via kwargs 'instance' key.
     obj = kwargs['instance']
-    try:
-        os.remove(os.path.join(settings.MEDIA_ROOT,str(obj.picture.image)))
+    #try to remove if instance is Picture
+    try: 
+        os.remove(os.path.join(settings.MEDIA_ROOT,str(obj.image)))
     except:
-        print 'Cannot delete picture file.'
+        pass
+    #try to remove if instance is Video
+    try:
+        os.remove(os.path.join(settings.MEDIA_ROOT,str(obj.movie)))
+        os.remove(os.path.join(settings.MEDIA_ROOT,str(obj.image)))
+    except:
+        pass
+    #try to remove if instance is File
+    try:
+        os.remove(os.path.join(settings.MEDIA_ROOT,str(obj.file)))
+    except:
+        pass
+    
+    
 
 
 def resizelargephoto(sender,**kwargs):
     obj = kwargs['instance']
     MAX_PICTURE_X_SIZE=500
-    print 'Trying to minimize photo picture...'
     try:
-        print 'imfilepath=...'
         imfilepath=os.path.join(settings.MEDIA_ROOT,str(obj.image))
-        print 'imfilepath=...%s'%imfilepath
         imfile=Image.open(imfilepath)
-        print '%s opened successfull...'%imfilepath
         xsize,ysize=imfile.size
-        print 'it has=%s,%s'%(xsize,ysize)
         xyratio=float(ysize)/float(xsize)
-        print 'his ratio,',xyratio
         if xsize>MAX_PICTURE_X_SIZE:
-            print 'perform resizing'
             outim=imfile.resize((int(MAX_PICTURE_X_SIZE),int(xyratio*MAX_PICTURE_X_SIZE)))
-            print 'resizing done'
-            outim.save(os.path.join(settings.MEDIA_ROOT,str(obj.picture.image)))
-            print 'quitting'
+            outim.save(imfilepath)
         else:
             pass
     except:
-        print 'it is exception rises... why?'
+        print 'Exception rises when image from cms resizing...'
     
 #def create_thumbnail(sender,**kwargs):
 #    obj = kwargs['instance']
@@ -135,10 +139,9 @@ def resizelargephoto(sender,**kwargs):
     
 
 pre_delete.connect(do_del_photo, sender=Photos)
-pre_delete.connect(do_del_photo1, sender=CMSPlugin)
-
-
-
+pre_delete.connect(do_del_cms_anything, sender=Picture)
+pre_delete.connect(do_del_cms_anything, sender=Video)
+pre_delete.connect(do_del_cms_anything, sender=File)
 
 post_save.connect(resizelargephoto,sender=Picture)
 #post_save.connect(create_thumbnail, sender=Photos)
