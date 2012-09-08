@@ -2,6 +2,7 @@
 from django.db import models
 from cms.models import CMSPlugin
 from django.db.models.signals import pre_delete, post_save
+from cms.plugins.picture.models import Picture
 from cms.models.fields import PlaceholderField
 import os
 import datetime
@@ -98,7 +99,7 @@ def resizelargephoto(sender,**kwargs):
     print 'Trying to minimize photo picture...'
     try:
         print 'imfilepath=...'
-        imfilepath=os.path.join(settings.MEDIA_ROOT,str(obj.picture.image))
+        imfilepath=os.path.join(settings.MEDIA_ROOT,str(obj.image))
         print 'imfilepath=...%s'%imfilepath
         imfile=Image.open(imfilepath)
         print '%s opened successfull...'%imfilepath
@@ -139,5 +140,5 @@ pre_delete.connect(do_del_photo1, sender=CMSPlugin)
 
 
 
-post_save.connect(resizelargephoto,sender=CMSPlugin)
+post_save.connect(resizelargephoto,sender=Picture)
 #post_save.connect(create_thumbnail, sender=Photos)
