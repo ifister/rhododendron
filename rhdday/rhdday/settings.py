@@ -7,7 +7,7 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 #Change it if needed.
 BASIC_URL='/'
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 
