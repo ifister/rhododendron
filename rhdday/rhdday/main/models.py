@@ -97,18 +97,25 @@ def resizelargephoto(sender,**kwargs):
     MAX_PICTURE_X_SIZE=500
     print 'Trying to minimize photo picture...'
     try:
+        print 'imfilepath=...'
         imfilepath=os.path.join(settings.MEDIA_ROOT,str(obj.picture.image))
+        print 'imfilepath=...%s'%imfilepath
         imfile=Image.open(imfilepath)
+        print '%s opened successfull...'%imfilepath
         xsize,ysize=imfile.size
+        print 'it has=%s,%s'%(xsize,ysize)
         xyratio=float(ysize)/float(xsize)
-        print imfilepath,xsize
+        print 'his ratio,',xyratio
         if xsize>MAX_PICTURE_X_SIZE:
+            print 'perform resizing'
             outim=imfile.resize((int(MAX_PICTURE_X_SIZE),int(xyratio*MAX_PICTURE_X_SIZE)))
+            print 'resizing done'
             outim.save(os.path.join(settings.MEDIA_ROOT,str(obj.picture.image)))
+            print 'quitting'
         else:
             pass
     except:
-        pass
+        print 'it is exception rises... why?'
     
 #def create_thumbnail(sender,**kwargs):
 #    obj = kwargs['instance']
