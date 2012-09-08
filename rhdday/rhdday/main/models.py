@@ -132,5 +132,5 @@ pre_delete.connect(do_del_photo1, sender=CMSPlugin)
 
 
 
-#post_save.connect(resizelargephoto,sender=CMSPlugin)
+post_save.connect(resizelargephoto,sender=CMSPlugin)
 #post_save.connect(create_thumbnail, sender=Photos)
