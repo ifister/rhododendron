@@ -2,7 +2,9 @@
 from django.db import models
 from cms.models import CMSPlugin
 from django.db.models.signals import pre_delete, post_save
-from cms.plugins.picture.models import Picture,Video,File
+from cms.plugins.picture.models import Picture
+from cms.plugins.file.models import File
+from cms.plugins.video.models import Video
 import os
 #import datetime
 from rhdday import settings 
